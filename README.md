@@ -36,3 +36,10 @@ Using Docker-Compose to build multiple images with network
 7. Dev build : Dockerfile.dev 
     docker build -f dockerfile.dev .
 8. docker run -p 3000:3000 bf9ba1744048  <-- the image id it build from the above command
+9. docker run -p 3000:3000 -v /app/node_modules -v  $(pwd):/app  <image_id>
+
+10. Or instead using the long docker command each time, 
+use the docker-compose.yml + following commands, note - the docker-compose.yml file, with the local file linked to the container and changes are hot deploy to the container. 
+
+docker-compose up
+docker-compose down
