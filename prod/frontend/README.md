@@ -32,4 +32,17 @@ docker-compose down
     OR using docker compose to run the test, but losig the ability for special commands , P, W , Q, S
     Look at the second services in the docker compose file. 
 
+12. Production Version of the app using ngix
+    Dockerfile 
+    Use node:alpine -> copy the package.json file > install dependencies (? deps only needed to execute 'npm run build') > Run 'npm run build' > start nginx (? where's nginx comning from??)
+
+    Docker file prod
+    Build phase: use node: alpine > copy the package.json file > install dependencies > run 'npm run build'
+
+    Run Phase: use nginx > copy over the result of 'npm run build' > start nginx
+
+    a. add the Dockerfile
+    b. docker build .
+    c. docker run -p 8080:80 <image_id>    
+
 
