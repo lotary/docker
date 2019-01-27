@@ -1,68 +1,35 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React app
+1. Install node.js
+2. Node -v 
+3. npm install -g create -react-app  // using this tool to generate an react-app
+4. npm run start -> to start a development server for dev only
+5. npm run test -> runs tests associated with the project
+6. npm run build -> builds a production version of the application 
+7. Dev build : Dockerfile.dev 
+    docker build -f dockerfile.dev .
+8. docker run -p 3000:3000 bf9ba1744048  <-- the image id it build from the above command
+9. docker run -p 3000:3000 -v /app/node_modules -v  $(pwd):/app  <image_id>
 
-## Available Scripts
+10. Or instead using the long docker command each time, 
+use the docker-compose.yml + following commands, note - the docker-compose.yml file, with the local file linked to the container and changes are hot deploy to the container. 
 
-In the project directory, you can run:
+docker-compose up
+docker-compose down
 
-### `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+ 11. Running tests
+    - docker run -it 673467c9eb4b npm run test
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+    or 
+    1st cmd 
+    - docker-compose up
+    2nd cmd
+    - docker ps to find out the conatainer id
+    - docker exec -it <container_id> npm run test
 
-### `npm test`
+    you can see the test run in the container. then you can add or remove tests on locel App.test.js, then re-run the test without exiting the container to observe how the the test are live update
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    OR using docker compose to run the test, but losig the ability for special commands , P, W , Q, S
+    Look at the second services in the docker compose file. 
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
